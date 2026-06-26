@@ -1,17 +1,16 @@
 # curio
 
-A new Flutter project.
+Think of it as a mini version of platforms like Udemy or Coursera with modern features.
 
-## Getting Started
+- Supports Arabic, English, French, and other languages.
+- multiple ways to login : Email & Password, Google and Facebook.
+- Rich in content, courses for all levels and in all fields.
+- Live chat with your friends to share ideas and thoughts!
 
-This project is a starting point for a Flutter application.
+Curio is an educational app which focuses on high value students.
 
-A few resources to get you started if this is your first Flutter project:
+# App architecture and packages used
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+There's multiple architectures that supports the idea of separating the UI from business logic
+But I choosed MVC alongside with getx package for more clean and maintainable code.
+also getx made it super easy for localization and switching, adding new languages.
