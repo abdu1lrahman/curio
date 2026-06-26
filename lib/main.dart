@@ -1,25 +1,30 @@
+import 'package:curio/controller/UI/page_indicator_controller.dart';
 import 'package:curio/model/locale/locale.dart';
 import 'package:curio/model/locale/locale_controller.dart';
 import 'package:curio/model/services/storage.dart';
+import 'package:curio/view/screens/login.dart';
 import 'package:curio/view/screens/onboarding.dart';
 import 'package:curio/view/screens/routes.dart';
 import 'package:curio/view/themes/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageService.init();
   await LocaleService.init();
-  runApp(MyApp());
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  runApp(Curio());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Curio extends StatelessWidget {
+  const Curio({super.key});
 
   @override
   Widget build(BuildContext context) {
     Get.put(LocaleController());
+    Get.put(PageIndicatorController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'curio',
@@ -30,7 +35,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       locale: Get.deviceLocale,
       translations: LocaleService(),
-      home: Onboarding(),
+      home: Login(),
     );
   }
 }

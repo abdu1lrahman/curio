@@ -11,12 +11,15 @@ class AppTheme {
   );
 
   static ThemeData darkTheme = ThemeData.dark().copyWith(
+    scaffoldBackgroundColor: primaryDarkMode,
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primaryDarkMode,
       brightness: Brightness.dark,
     ),
     textTheme: darkmodetexttheme,
   );
+
+  static Color? get primaryDarkMode => null;
 }
 
 TextTheme lightmodetexttheme = TextTheme(
@@ -26,13 +29,13 @@ TextTheme lightmodetexttheme = TextTheme(
 );
 
 TextTheme darkmodetexttheme = TextTheme(
-  headlineLarge: TextStyle(color: Colors.black),
-  headlineMedium: TextStyle(color: Colors.black),
+  // headlineLarge: TextStyle(color: Colors.white),
+  // headlineMedium: TextStyle(color: Colors.white),
   headlineSmall: TextStyle(color: Colors.black),
   titleLarge: TextStyle(color: Colors.black),
   titleMedium: TextStyle(color: Colors.black),
   titleSmall: TextStyle(color: Colors.black),
   bodyLarge: TextStyle(color: Colors.black),
-  bodyMedium: TextStyle(color: Colors.black),
+  bodyMedium: TextStyle(color: Colors.white),
   bodySmall: TextStyle(color: Colors.black),
 );

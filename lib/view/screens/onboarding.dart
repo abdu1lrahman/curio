@@ -1,50 +1,26 @@
+import 'package:curio/controller/UI/page_indicator_controller.dart';
 import 'package:curio/model/locale/locale_controller.dart';
+import 'package:curio/view/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class Onboarding extends StatefulWidget {
+class Onboarding extends StatelessWidget {
   const Onboarding({super.key});
 
   @override
-  State<Onboarding> createState() => _OnboardingState();
-}
-
-class _OnboardingState extends State<Onboarding>
-    with SingleTickerProviderStateMixin {
-  final _pageController = PageController();
-  int _currentPage = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController.addListener(() {
-      final page = _pageController.page?.round() ?? 0;
-      if (page != _currentPage) {
-        setState(() {
-          _currentPage = page;
-        });
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _pageController.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    LocaleController languageController = Get.find();
+    final languageController = Get.find<LocaleController>();
+    final pageController = Get.find<PageIndicatorController>();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           PageView(
-            controller: _pageController,
+            controller: pageController.pageController,
             children: [
               Column(
                 children: [
@@ -75,10 +51,7 @@ class _OnboardingState extends State<Onboarding>
                             style: Theme.of(context).textTheme.headlineLarge
                                 ?.copyWith(fontWeight: FontWeight.bold),
                           ),
-                          Text(
-                            textAlign: TextAlign.center,
-                            "your portal".tr,
-                          ),
+                          Text(textAlign: TextAlign.center, "your portal".tr),
                         ],
                       ),
                     ),
@@ -144,9 +117,13 @@ class _OnboardingState extends State<Onboarding>
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0,
+                        vertical: 20.0,
+                      ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        spacing: 20,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             textAlign: TextAlign.center,
@@ -156,14 +133,13 @@ class _OnboardingState extends State<Onboarding>
                           ),
                           Text(
                             textAlign: TextAlign.center,
-
                             "Connect with thousands of fellow learners, share your progress, collaborate on projects, and level up together.",
                           ),
-                          TextButton(
-                            onPressed: () {
+                          CustomButton(
+                            onTap: () {
                               Get.toNamed('/login');
                             },
-                            child: Text("Login Now"),
+                            title: "Login Now",
                           ),
                         ],
                       ),
@@ -178,15 +154,18 @@ class _OnboardingState extends State<Onboarding>
               alignment: Alignment.center,
               height: 150,
               color: Colors.transparent,
-              child: SmoothPageIndicator(
-                controller: _pageController,
-                count: 3,
-                effect: WormEffect(
-                  dotHeight: 16.0,
-                  dotWidth: 16.0,
-                  spacing: 16.0,
-                  dotColor: Colors.grey,
-                  activeDotColor: Theme.of(context).colorScheme.primary,
+              child: GetBuilder<PageIndicatorController>(
+                init: PageIndicatorController(),
+                builder: (controller) => SmoothPageIndicator(
+                  controller: controller.pageController,
+                  count: 3,
+                  effect: WormEffect(
+                    dotHeight: 16.0,
+                    dotWidth: 16.0,
+                    spacing: 16.0,
+                    dotColor: Colors.grey,
+                    activeDotColor: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
               ),
             ),

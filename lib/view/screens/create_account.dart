@@ -15,7 +15,10 @@ class CreateAccount extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LottieBuilder.asset('assets/animations/animation2.json'),
+            ColorFiltered(
+              colorFilter: _getLottieColorFilter(context),
+              child: LottieBuilder.asset('assets/animations/animation2.json'),
+            ),
             Text(
               textAlign: TextAlign.center,
               "Learn with us",
@@ -57,7 +60,7 @@ class CreateAccount extends StatelessWidget {
                   TextSpan(
                     text: "Terms of Service",
                     style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
                     recognizer: TapGestureRecognizer()
@@ -69,7 +72,7 @@ class CreateAccount extends StatelessWidget {
                   TextSpan(
                     text: "Privacy Policy",
                     style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
                     recognizer: TapGestureRecognizer()
@@ -84,5 +87,36 @@ class CreateAccount extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  ColorFilter _getLottieColorFilter(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    if (isDark) {
+      // Inverts black → white
+      return const ColorFilter.matrix([
+        -1,
+        0,
+        0,
+        0,
+        255,
+        0,
+        -1,
+        0,
+        0,
+        255,
+        0,
+        0,
+        -1,
+        0,
+        255,
+        0,
+        0,
+        0,
+        1,
+        0,
+      ]);
+    }
+    return const ColorFilter.mode(Colors.transparent, BlendMode.dst);
   }
 }

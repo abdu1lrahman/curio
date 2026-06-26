@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:curio/view/themes/app_colors.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -11,6 +12,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: AppColors.primaryDarkMode,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Column(

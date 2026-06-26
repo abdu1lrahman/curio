@@ -1,15 +1,17 @@
 import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
+import 'package:curio/controller/UI/navigation_bar_controller.dart';
 import 'package:curio/model/services/greetings.dart';
 import 'package:curio/view/widgets/custom_my_course.dart';
 import 'package:curio/view/widgets/image_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: ListView(
@@ -186,25 +188,30 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: CrystalNavigationBar(
-        currentIndex: 0,
-        borderRadius: 16,
-        curve: Curves.bounceInOut,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        onTap: (p0) {},
-        items: [
-          CrystalNavigationBarItem(
-            icon: Icons.home,
-            badge: Badge(
-              label: Text("9+", style: TextStyle(color: Colors.white)),
+      bottomNavigationBar: GetBuilder<NavigationBarController>(
+        init: NavigationBarController(),
+        builder: (controller) => CrystalNavigationBar(
+          currentIndex: controller.currentIndex,
+          borderRadius: 16,
+          curve: Curves.bounceInOut,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          onTap: (newIndex) {
+            controller.changeIndex(newIndex);
+          },
+          items: [
+            CrystalNavigationBarItem(icon: Icons.home),
+            CrystalNavigationBarItem(
+              icon: Icons.favorite,
+              badge: Badge(
+                label: Text("+9", style: TextStyle(color: Colors.white)),
+              ),
             ),
-          ),
-          CrystalNavigationBarItem(icon: Icons.favorite),
-          CrystalNavigationBarItem(icon: Icons.menu_rounded),
-          CrystalNavigationBarItem(icon: Icons.view_cozy_outlined),
-        ],
+            CrystalNavigationBarItem(icon: Icons.menu_rounded),
+            CrystalNavigationBarItem(icon: Icons.view_cozy_outlined),
+          ],
+        ),
       ),
     );
   }

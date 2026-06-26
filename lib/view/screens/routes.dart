@@ -6,9 +6,9 @@ import 'package:curio/view/screens/onboarding.dart';
 import 'package:get/get.dart';
 
 List<GetPage> routes = [
-  GetPage(name: '/welcome', page: () => Onboarding()),
-  GetPage(name: '/home', page: () => Home()),
-  GetPage(name: '/login', page: () => Login()),
-  GetPage(name: '/createaccount', page: () => CreateAccount()),
-  GetPage(name: '/resetpassword', page: () => ResetPassword()),
+  GetPage(name: '/welcome', page: () => const Onboarding()),
+  GetPage(name: '/home', page: () => const Home()),
+  GetPage(name: '/login', page: () => const Login()),
+  GetPage(name: '/createaccount', page: () => const CreateAccount()),
+  GetPage(name: '/resetpassword', page: () => const ResetPassword()),
 ];
