@@ -42,6 +42,7 @@ dependencies:
   dio: ^5.9.2
   get_storage: ^2.1.1
   firebase_core: ^4.11.0
+  flutter_dotenv: ^6.0.1
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
     - assets/icons/
     - assets/animations/
     - assets/translations/
+    - .env
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
