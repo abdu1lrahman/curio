@@ -2,16 +2,18 @@ import 'package:curio/controller/UI/page_indicator_controller.dart';
 import 'package:curio/model/locale/locale.dart';
 import 'package:curio/model/locale/locale_controller.dart';
 import 'package:curio/model/services/storage.dart';
-import 'package:curio/view/screens/login.dart';
 import 'package:curio/view/screens/onboarding.dart';
 import 'package:curio/view/screens/routes.dart';
 import 'package:curio/view/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await StorageService.init();
   await LocaleService.init();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -35,7 +37,7 @@ class Curio extends StatelessWidget {
       themeMode: ThemeMode.system,
       locale: Get.deviceLocale,
       translations: LocaleService(),
-      home: Login(),
+      home: Onboarding(),
     );
   }
 }

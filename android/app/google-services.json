@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1053543447856",
+    "project_id": "curio-a250f",
+    "storage_bucket": "curio-a250f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053543447856:android:47b4c652c715d25d0b1cf5",
+        "android_client_info": {
+          "package_name": "com.example.curio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeBtA7VlMyGrDLX1jfsCJmg9O8oLyHWWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
