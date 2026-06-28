@@ -11,6 +11,6 @@ Curio is an educational app which focuses on high value students.
 
 # App architecture and packages used
 
-There's multiple architectures that supports the idea of separating the UI from business logic
+There's multiple architectures that supports the idea of Separation of Concerns which means separating the UI from business logic
 But I choosed MVC alongside with getx package for more clean and maintainable code.
 also getx made it super easy for localization and switching, adding new languages.
