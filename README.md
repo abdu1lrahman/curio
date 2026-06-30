@@ -14,3 +14,8 @@ Curio is an educational app which focuses on high value students.
 There's multiple architectures that supports the idea of Separation of Concerns which means separating the UI from business logic
 But I choosed MVC alongside with getx package for more clean and maintainable code.
 also getx made it super easy for localization and switching, adding new languages.
+
+# Backend
+
+For the backend I used firebase, it is very powerful, easy to use tool.
+Firebase handles Authentcation, messaging, notifications, AI, and many other stuff in my project
